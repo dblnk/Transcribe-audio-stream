@@ -14,7 +14,7 @@ You will need to install sounddevice, numpy and whisper python packages.
 pip install -r requirements.txt
 ```
 
-The code was tested on MacOS Sonoma 14.7.1. 
+The code was tested on MacOS Sonoma 14.7.1.  
 Workflow / pipeline suggestions for other systems are greatly appreciated.
 
 ## Step-by-step instruction to use
@@ -27,28 +27,32 @@ or any other audio routing driver. Windows users might profit from Voicemeeter a
 
 3. Start Driver.
 
-4. - Option A (you won't hear the sound from your speakers any more, as the sound output is routed virtually to Whisper)
-Open Mac Settings > Sound
-Select VB-Cable as Output AND Input device (Type "Virtual"). Note that you will not be able to hear the sound through your speakers or headphones any more, since it is routed to VB Audio.
+4. 
+- Option A (you won't hear the sound from your speakers any more, as the sound output is routed virtually to Whisper)  
+Open Mac Settings > Sound  
+Select VB-Cable as Output AND Input device (Type "Virtual"). Note that you will not be able to hear the sound through your speakers or headphones any more, since it is routed to VB Audio.  
 Make sure to adjust the device definition in the script to 'VB-Cable'
+
 ```python
 device_options = ['VB-Cable', 'Blackhole 2ch', 'Aggregate Device', 'MacBook Pro Microphone'] 
 device = device_options[0]   
 ```
 
-- Option B (you will hear one of the two stereo fields through your speaker while the other will be routed to VB Audio)
-Create an Aggregate Device in MacOS "MIDI Audio Setup" using VB-Cable and your speakers, with VB-Cable being the clock source. 
-"Configure Speakers" with Channel 1 to VB-Cable and Channel 3 to your speaker. 
-The stereo signal will be split and you will hear one half and the other will be routed to whisper.
-Open Mac Settings > Sound and select Aggregate Device as Output AND Input Devices.
+- Option B (you will hear one of the two stereo fields through your speaker while the other will be routed to VB Audio)  
+Create an Aggregate Device in MacOS "MIDI Audio Setup" using VB-Cable and your speakers, with VB-Cable being the clock source.  
+"Configure Speakers" with Channel 1 to VB-Cable and Channel 3 to your speaker.  
+The stereo signal will be split and you will hear one half and the other will be routed to whisper.  
+Open Mac Settings > Sound and select Aggregate Device as Output AND Input Devices.  
 Make sure to adjust the device definition in the script to 'VB-Cable'
+
 ```python
 device_options = ['VB-Cable', 'Blackhole 2ch', 'Aggregate Device', 'MacBook Pro Microphone'] 
 device = device_options[2]   
 ```
 
-5. You are ready to run transcribe-audio-stream.py in the Terminal! 
+5. You are ready to run transcribe-audio-stream.py in the Terminal!  
 Just adjust the input language and model sizes and buffer duration for optimal performance. Medium model is recommended for non-English languages. 30 seconds audio buffer duration are set as default.
+
 ```python
 # choose model
 model_size = ['tiny', 'base', 'small' , 'medium', 'large', 'turbo'] # pass desired model size in the model loading line
@@ -70,6 +74,6 @@ buffer_duration = 30  # Duration to accumulate audio data in seconds
 
 
 ## Future work
-To enable MPS / apple GPU, try modifying the code according to advice on:
+To enable MPS / apple GPU, try modifying the code according to advice on:  
 https://huggingface.co/docs/transformers/model_doc/whisper
 
