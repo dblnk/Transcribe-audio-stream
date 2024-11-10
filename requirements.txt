@@ -1,0 +1,7 @@
+numpy==1.25.1
+openai==1.53.0
+openai-whisper==20240930
+scipy==1.11.1
+sounddevice==0.5.1
+torch==2.2.2
+whisper==1.1.10
